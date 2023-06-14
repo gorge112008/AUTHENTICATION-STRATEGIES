@@ -1,0 +1,330 @@
+.login {
+  display: flex;
+  justify-content: center;
+  border: solid black 1px;
+  background-color: #fdc;
+}
+
+.login__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../assets/foodleft.jpeg);
+  width: 80%;
+  height: 90vh;
+  outline: solid black 1px;
+  transition: all ease-in-out 900ms;
+}
+
+.login__container__form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 85%;
+  height: 80%;
+  position: relative;
+  background-color: #def;
+  border-top-right-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border: solid black 3px;
+  transition: all ease-in-out 900ms;
+}
+
+.login__form--title {
+  position: relative;
+  display: block;
+  text-align: center;
+  top: 0;
+  margin: 0;
+  width: 60%;
+}
+
+.login__form--title b {
+  position: relative;
+  display: block;
+  font-size: 1.5rem;
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(20, 4, 169);
+  filter: drop-shadow(0 0 20px #9900ff);
+  border-bottom: solid rgb(20, 4, 169) 2px;
+}
+
+.login__form--contain {
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 10px;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  background-color: #ffffff;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 85%;
+  filter: drop-shadow(0 1px 10px #edd1ff);
+}
+
+.login__form--contain ul {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: fit-content;
+  width: max-content;
+}
+
+.login__form__profile {
+  border: solid rgb(137, 137, 137) 3px;
+  background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
+  background-size: cover;
+  height: 10vh;
+  width: 10vh;
+  border-radius: 100%;
+  margin-bottom: 10px;
+}
+
+.login__form--contain li {
+  border: solid rgb(255, 183, 0) 2px;
+  background-color: rgb(255, 244, 223);
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  height: 11vh;
+  
+}
+
+.login--label {
+  width: 85%;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(27, 179, 169);
+  font-family: "Times New Roman", Times, serif;
+  background-color: rgb(255, 244, 223);
+  transition: all ease-in-out 900ms;
+  z-index: 1;
+}
+
+.login--input {
+  display: block;
+  margin: auto;
+  left: 0;
+  right: 0;
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 25px ;
+  border-radius: 5px;
+  color: black;
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+  height: 5vh;
+  width: 85%;
+  border: none;
+  border-bottom: solid rgb(0, 0, 0) 3px;
+}
+
+.login--input:invalid {
+  display: block;
+  background-color: white;
+  color: black;
+  border-bottom: solid black 3px;
+}
+
+.login--input:valid {
+  border-bottom: solid rgb(105, 246, 168) 3px;
+  background-color: white;
+}
+
+.login__form__input:hover .login--label,
+.login__form__input:focus-within .login--label {
+  position: relative;
+  font-size: 1.5rem;
+}
+
+.login__form__input:focus-within .login--input {
+  color: rgb(4, 4, 103);
+  border: solid black 2px;
+}
+
+.viewUser,
+.viewPassword {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.viewUser:checked ~ .login__form__input .login--label,
+.viewPassword:checked ~ .login__form__input .login--label {
+  position: relative;
+  font-size: 1.5rem;
+}
+
+
+.login__form__input:hover .RevealPsw{
+  display: block;
+}
+
+.RevealPsw{
+  display: none;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  margin: 0;
+  height: 2.5vh;
+  width: 2.5vh;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  z-index: 0;
+}
+
+.login__checkBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: auto;
+  width: fit-content;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.login__checkBox input {
+  height: 2.5vh;
+  width: 2.5vh;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.login__checkBox label {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.login__inputBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 5vh;
+  width: 100%;
+}
+
+.btnSignUp{
+  position: absolute;
+  display: block;
+  margin: auto;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgb(217, 220, 219);
+  cursor: pointer;
+  border: solid rgb(183, 183, 183) 2px;
+  border-radius: 5px;
+  width: 45%;
+  padding: 0 10px;
+}
+
+.btnSignUp:hover {
+  background-color: rgb(184, 246, 242);
+  border: solid aqua 2px;
+}
+
+.btnSignUp b{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1rem;
+    color: purple;
+  }
+
+.btnLogin {
+  position: absolute;
+  display: block;
+  margin: auto;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: solid greenyellow 2px;
+  border-radius: 5px;
+  background-color: rgb(228, 254, 190);
+  cursor: pointer;
+  width: 45%;
+  padding: 0 10px;
+}
+
+.btnLogin:hover {
+  border: solid rgb(112, 186, 0) 2px;
+  background-color: rgb(185, 249, 89);
+}
+
+.btnLogin b{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1rem;
+    color: green;
+  }
+
+/*CSS DEVICE < 600px (37.5rem)(base 1rem=16px) (CEL)*/
+
+@media only screen and (max-width: 37.5rem) {
+  /*DEVICE CEL LOGIN FORM BLOCK*/
+  .login__container {
+    width:  100%;
+  }
+  .login__container__form {
+    flex-direction: column;
+    width: 80%;
+    height: 90%;
+  }
+  .login__form__profile {
+    height: 13vh;
+    width: 13vh;
+  }
+  .login__inputBox {
+    flex-direction: column-reverse;
+    height: fit-content;
+  }
+  .btnSignUp{
+    position: relative;
+    border-radius: 5px;
+    width: 47vw;
+    height: 5vh;
+  }
+  
+  .btnLogin {
+    position: relative;
+    margin: auto;
+    width: 47vw;
+    height: 5vh;
+    margin-bottom: 20px;
+  }
+}
+/*CSS DEVICE > 992px (62rem) (base 16px=1rem) (LAP)*/
+
+@media only screen and (min-width: 69rem) {
+  /*DEVICE LAP LOGIN FORM BLOCK*/
+  .login__container__form {
+    width: 60%;
+    height: 80%;
+  }
+}

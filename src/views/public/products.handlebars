@@ -1,0 +1,166 @@
+<div class="main__container--side col s2"></div>
+<div class="main__container__dinamic col s9">
+  <div class="dinamic__container--addProduct inactiveAdd">
+    <div class="col s12 m5 l5">
+      <div class="dinamic__tittle row">
+        <h3 class="dinamic__tittle--h3">
+          View a product
+        </h3>
+      </div>
+      <div class="form onlyView row">
+        <form method="POST" action="#" name="form" class="col s12">
+          <div class="form__contain row">
+            <div class="input-field">
+              <select
+                id="selectCategory"
+                name="select"
+                class="dinav__order--select"
+              >
+                <option class="dinav--option" value="Food">Category: Food</option>
+                <option class="dinav--option" value="Drink">Category: Drink</option>
+                <option class="dinav--option" value="Other">Category: Other</option>
+              </select>
+              <i class="arrowSelect"></i>
+            </div>
+          </div>
+          <div class="form__contain row">
+            <div class="input-field col s10">
+              <input id="tittle" type="text" class="validate" required />
+              <label for="tittle">Tittle</label>
+            </div>
+          </div>
+          <div class="form__contain row">
+            <div class="input-field col s12">
+              <input id="description" type="text" class="validate" required />
+              <label for="description">Description</label>
+            </div>
+          </div>
+          <div class="form__contain row">
+            <div class="input-field col s12">
+              <input id="code" type="number" class="validate" required />
+              <label for="code">Code</label>
+            </div>
+          </div>
+          <div class="form__contain row">
+            <div class="input-field col s12">
+              <input id="price" type="number" class="validate" required />
+              <label for="price">Price</label>
+            </div>
+          </div>
+          <div class="form__contain row">
+            <div class="input-field col s12">
+              <input id="stock" type="number" class="validate" required />
+              <label for="stock">Stock</label>
+            </div>
+          </div>
+          <div class="form__contain hidden row">
+            <div class="input-field col s12">
+              <label for="thumbnail">Thumbnail</label>
+              <input id="thumbnail" type="text" class="validate" />
+            </div>
+          </div>
+          <div class="form__contain row">
+            <div class="input-field col s12">
+              <label for="status">Status</label>
+              <input id="status" type="text" class="validate" />
+            </div>
+          </div>
+        </form>
+      </div>
+      <button type="button" class="btnViewClose col s12">Close View</button>
+    </div>
+  </div>
+  <div class="dinamic__container--listProduct col s12 m12">
+    <div class="static__container--header row noMargin">
+      <div class="nav__dinamic col s12">
+        <b>Let's be superheroes by providing good service!!!</b>
+      </div>
+      <div class="dinav__container col s12">
+        <nav class="dinav__container--order col s12">
+          <div class="dinav__titleOrder">
+            <label class="dinav__order--label">Sort by:
+            </label>
+          </div>
+          <div class="dinav__order">
+            <select
+              id="orderProducts"
+              name="select"
+              class="dinav__order--select"
+            >
+              <option class="dinav--option" value="">No Sorting</option>
+              <option class="dinav--option" value="asc">Price from lowest to
+                highest</option>
+              <option class="dinav--option" value="desc">Price from highest to
+                lowest</option>
+            </select>
+          </div>
+        </nav>
+        <nav class="dinav__container--option col s12">
+          <div class="dinav__titleFilter">
+            <label class="dinav__filter--label">Filter by:
+            </label>
+          </div>
+          <div class="dinav__filter">
+            <select
+              id="categoryProducts"
+              name="select"
+              class="dinav__filter--select"
+            >
+              <option class="dinav--option" value="">No Category</option>
+              <option class="dinav--option" value="Food">Food</option>
+              <option class="dinav--option" value="Drink">Drink</option>
+              <option class="dinav--option" value="Other">Other</option>
+            </select>
+          </div>
+          <div class="dinav__filter">
+            <select
+              id="statusProducts"
+              name="select"
+              class="dinav__order--select"
+            >
+              <option class="dinav--option" value="">All</option>
+              <option class="dinav--option" value="success">Avaliable</option>
+              <option class="dinav--option" value="error">Not Avaliable</option>
+            </select>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="dinamic__container--grid row noMargin">
+      <div class="container__grid col m12">
+        <!--dinamic content-->
+        <div class="loading">
+          <b>
+            LOADING PRODUCTS...
+          </b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row noMargin">
+    <nav class="dinav__container--pages nav">
+      <button id="page__btnIzq" class="dinav__pages--izq"><i
+          class="fa-solid fa-arrow-left"
+        ></i></button>
+      <label class="dinav__pages--center"></label>
+      <button id="page__btnDer" class="dinav__pages--der"><i
+          class="fa-solid fa-arrow-right"
+        ></i></button>
+    </nav>
+  </div>
+</div>
+<div class="main__container--side col s1"></div>
+<div id="return"><a href="/login" type="button"><i
+      class="fas fa-light fa-reply-all"
+    ></i></a></div>
+<button type="button" id="validate">VALIDATE</button>
+<!-- Compiled and minified JavaScript -->
+<script
+  src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/products.js"></script>

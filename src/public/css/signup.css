@@ -1,0 +1,338 @@
+
+.signup {
+  display: flex;
+  justify-content: center;
+  border: solid black 1px;
+  background-color: #fdc;
+}
+
+.signup__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../assets/foodleft.jpeg);
+  width: 80%;
+  height: 90vh;
+  outline: solid black 1px;
+  transition: all ease-in-out 900ms;
+}
+
+.signup__container__form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 85%;
+  height: 90%;
+  position: relative;
+  background-color: #def;
+  border-top-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border: solid black 3px;
+  transition: all ease-in-out 900ms;
+}
+
+.signup__form--title {
+  position: relative;
+  display: block;
+  text-align: center;
+  top: 0;
+  margin: 0;
+  width: 60%;
+}
+
+.signup__form--title b {
+  position: relative;
+  display: block;
+  font-size: 1.5rem;
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(20, 4, 169);
+  filter: drop-shadow(0 0 20px #9900ff);
+  border-bottom: solid rgb(20, 4, 169) 2px;
+}
+
+.signup__form--contain {
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 10px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  background-color: #ffffff;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 85%;
+  filter: drop-shadow(0 1px 10px #edd1ff);
+}
+
+.signup__form--contain ul {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: fit-content;
+  width: fit-content;
+  font-size: 1rem;
+}
+
+.signup__form__profile {
+  border: solid rgb(137, 137, 137) 3px;
+  background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
+  background-size: cover;
+  height:10vh;
+  width: 10vh;
+  border-radius: 100%;
+  margin-bottom: 10px;
+}
+
+.signup__form--contain li {
+  border: solid rgb(255, 183, 0) 1px;
+  background-color: rgb(255, 244, 223);
+  border-radius:10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 35vw;
+  font-size: 1rem;
+  padding: 2px;
+  height: fit-content;
+  margin-bottom: 5px;
+}
+
+.signup--label {
+  width: 95%;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  position: relative;
+  margin: auto;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: rgb(27, 179, 169);
+  font-family: "Times New Roman", Times, serif;
+  transition: all ease-in-out 900ms;
+}
+
+.signup--input {
+  display: block;
+  margin: auto;
+  left: 0;
+  right: 0;
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 25px;
+  border-radius: 5px;
+  color: black;
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+  height: 5vh;
+  width: 30vw;
+  border: none;
+  border-bottom: solid rgb(0, 0, 0) 3px;
+
+}
+
+.signup--input:invalid {
+  display: block;
+  background-color: white;
+  color: black;
+  border-bottom: solid black 3px;
+}
+
+.signup--input:valid {
+  border-bottom: solid rgb(105, 246, 168) 3px;
+  background-color: white;
+}
+
+.signup__form__input:hover .signup--label,
+.signup__form__input:focus-within .signup--label {
+  font-size: 1.3rem;
+}
+
+.signup__form__input:focus-within .signup--input {
+  color: rgb(4, 4, 103);
+  border: solid black 2px;
+}
+
+.signup__form__input:hover .RevealPsw{
+  display: block;
+}
+
+.RevealPsw{
+  display: none;
+  position: absolute;
+  right: 3vw;
+  bottom: 9px;
+  margin: 0;
+  height: 2.5vh;
+  width: 2.5vh;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  z-index: 0;
+}
+
+.signup__inputBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 5vh;
+  width: 100%;
+}
+
+.btnSignUp {
+  position: absolute;
+  display: block;
+  margin: auto;
+  right: 0;
+  top: 15px;
+  bottom: 0;
+  background-color: rgb(184, 246, 242);
+  cursor: pointer;
+  border: solid aqua 2px;
+  border-radius: 5px;
+  width: 45%;
+  height: 100%;
+}
+
+.btnSignUp:hover {
+  background-color: rgb(92, 244, 233);
+  border: solid rgb(1, 178, 178) 2px;
+}
+
+.btnSignUp b {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1rem;
+  color: purple;
+}
+
+.btnLogin {
+  position: absolute;
+  display: block;
+  margin: auto;
+  left: 0;
+  top: 15px;
+  bottom: 0;
+  border: solid rgb(184, 178, 178) 2px;
+  border-radius: 5px;
+  background-color: rgb(227, 227, 227);
+  cursor: pointer;
+  width: 45%;
+  height: 100%;
+}
+
+.btnLogin:hover{
+  border: solid rgb(112, 186, 0) 2px;
+  background-color: rgb(185, 249, 89);
+}
+
+.btnLogin b {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1rem;
+  color: green;
+}
+
+/*CSS DEVICE < 600px (37.5rem)(base 1rem=16px) (CEL)*/
+
+@media only screen and (max-width: 37.5rem) {
+  /*DEVICE CEL signup FORM BLOCK*/
+  .signup__container {
+    width:  100%;
+  }
+  
+  .signup__container__form {
+    flex-direction: column;
+    width: 80%;
+    height: 90%;
+  }
+  .signup__form__profile {
+    height: 9vh;
+    width: 9vh;
+  }
+
+  .signup__form--contain {
+    width: 80%;
+    height: 85%;
+  }
+
+  .signup__form--contain li {
+    width: 55vw;
+    height: 8vh;
+  }
+
+  .signup--label {
+    width: 95%;
+  }
+
+  .signup--input {
+    width: 50vw;
+    height: 4vh;
+  }
+  .RevealPsw{
+    right: 20px;
+    bottom: 8px;
+  }
+  .signup__inputBox {
+    flex-direction: column-reverse;
+    height: fit-content;
+  }
+
+  .btnSignUp{
+    position: relative;
+    width: 55vw;
+    height: 5vh;
+    margin: 10px 0;
+  }
+  
+  .btnSignUp b{
+    font-size: 1rem;
+  }
+
+  .btnLogin {
+    position: relative;
+    width: 55vw;
+    height: 5vh;
+  }
+
+  .btnLogin b{
+    font-size: 1rem;
+  }
+  
+}
+
+/*CSS DEVICE > 992px (62rem) (base 16px=1rem) (LAP)*/
+
+@media only screen and (min-width: 69rem) {
+  /*DEVICE LAP signup FORM BLOCK*/
+  .signup__container__form {
+    width: 60%;
+    height: 90%;
+  }
+
+  .signup__form--contain {
+    width: 100%;
+    height: 85%;
+  }
+
+  .signup__form--contain li {
+    width: 25vw;
+  }
+
+  .signup--input {
+    width: 23vw;
+  }
+
+  .RevealPsw{
+    right: 2.5vh;
+  }
+}

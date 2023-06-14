@@ -1,0 +1,92 @@
+<div class="signup">
+  <div class="signup__container">
+    <div class="signup__container__form">
+      <div class="signup__form--title">
+        <b>REGISTER</b>
+      </div>
+      <div class="signup__form--contain">
+        <form method="POST" action="#" name="form">
+          <ul>
+            <div class="signup__form__profile">
+            </div>
+            <li>
+              <div class="signup__form__input">
+                <label class="signup--label">First Name</label>
+                <input
+                  class="signup__firstname signup--input"
+                  type="text"
+                  id="first_name"
+                  required
+                />
+              </div>
+            </li>
+            <li>
+              <div class="signup__form__input">
+                <label class="signup--label">Last Name</label>
+                <input
+                  class="signup__lastname signup--input"
+                  type="text"
+                  required
+                  id="last_name"
+                />
+              </div>
+            </li>
+            <li>
+              <div class="signup__form__input">
+                <label class="signup--label">Email</label>
+                <input
+                  class="signup__email signup--input"
+                  type="email"
+                  placeholder="email@example.com"
+                  id="email"
+                  required
+                />
+              </div>
+            </li>
+            <li>
+              <div class="signup__form__input">
+                <label class="signup--label">Age</label>
+                <select class="signup__age signup--input" id="age" required>
+                  <option value="18">18</option>
+                </select>
+              </div>
+            </li>
+            <li>
+              <div class="signup__form__input">
+                <label class="signup--label">Password</label>
+                <input
+                  class="signup__psw signup--input"
+                  type="password"
+                  id="password"
+                  required
+                />
+                <button type="button" id="btnTogglePsw" class="RevealPsw">
+                  <i class="fa-regular fa-eye-slash">
+                  </i></button>
+              </div>
+            </li>
+          </ul>
+          <div class="signup__inputBox">
+            <div class="signup__action">
+              <button type="submit" class="btnSignUp">
+                <b>SIGN UP</b>
+              </button>
+              <button type="button" class="btnLogin">
+                <b>GET IN</b>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Compiled and minified JavaScript -->
+<script
+  src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+></script>
+<script src="/js/index.js"></script>
+<script src="/js/signup.js"></script>

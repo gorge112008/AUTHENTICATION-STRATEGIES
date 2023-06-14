@@ -1,0 +1,181 @@
+.profile__container--user {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: 12vh;
+  background-color: rgb(255, 255, 255);
+}
+
+.profile__user {
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: row;
+  top: 25px;
+  left: 10px;
+  border: solid black 1px;
+  margin-left: 1px;
+  padding: 5px;
+  height: 10vh;
+  width: 100%;
+  text-align: center;
+}
+.profile__user--img {
+  margin-right: 5px;
+  width: 8vh;
+  height: 8vh;
+  border-radius: 50%;
+  border: solid rgb(1, 167, 26) 2px;
+  background-color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 500ms ease;
+}
+
+.profile__container--description {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  height: fit-content;
+  border: solid rgb(7, 169, 140) 3px;
+  background-color: rgb(255, 255, 255);
+}
+
+.profile__information--title b {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.2rem;
+  display: flex;
+  text-align: start;
+  color: rgb(1, 23, 134);
+}
+
+.profile__information {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2vw;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+  padding: 20px;
+}
+
+.input-field {
+  pointer-events: none;
+}
+
+.active {
+  pointer-events: all;
+}
+
+.input-field label {
+  color: rgb(3, 138, 138);
+  font-size: 1.6rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.btnUnlockData,
+.btnUnlockData:focus {
+  position: relative;
+  justify-self: center;
+  align-self: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  width: fit-content;
+  height: fit-content;
+  padding: 4px;
+  color: rgb(30, 0, 255);
+  border: none;
+  background-color: rgb(196, 214, 255);
+  box-shadow: rgb(0, 41, 249) 1px 1px 5px 0px;
+  cursor: pointer;
+}
+
+.btnUnlockData:hover {
+  background-color: rgb(118, 244, 196);
+  box-shadow: rgb(3, 130, 69) 1px 1px 5px 0px;
+}
+
+.btnUnlockData b {
+  font-size: 1.3rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.RevealID {
+  position: absolute;
+  right: -12px;
+  bottom: 18px;
+  margin: 0;
+  height: 2.5vh;
+  width: 2.5vh;
+  cursor: pointer;
+  z-index: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.RevealID:focus {
+  background-color: transparent;
+  border: none;
+}
+
+.profile__container--logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12vh;
+  background-color: rgb(255, 255, 255);
+}
+
+.btnLogout {
+  position: relative;
+  justify-self: center;
+  align-self: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  width: 60%;
+  height: fit-content;
+  padding: 4px;
+  border: none;
+  color: red;
+  background-color: rgb(255, 196, 196);
+  box-shadow: rgb(249, 0, 0) 1px 1px 5px 0px;
+  cursor: pointer;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.btnLogout:hover,
+.btnLogout:focus {
+  background-color: rgb(254, 86, 86);
+  box-shadow: #e46464 0px 0px 10px 0px;
+  cursor: pointer;
+  color: #000000;
+}
+
+/*CSS DEVICE < 600px (37.5rem)(base 1rem=16px) (CEL)*/
+
+@media only screen and (max-width: 37.5rem) {
+  /*DEVICE CEL signup FORM BLOCK*/
+  .profile__information {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4vw;
+  }
+}
+
+/*CSS DEVICE > 992px (62rem) (base 16px=1rem) (LAP)*/
+
+@media only screen and (min-width: 69rem) {
+  /*DEVICE LAP signup FORM BLOCK*/
+  .profile__information {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 7vw;
+  }
+}

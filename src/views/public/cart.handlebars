@@ -1,0 +1,58 @@
+<div class="main__container--side col s2"></div>
+<div class="main__container__dinamic col s9">
+  <div class="cart__container--header row noMargin">
+    <div class="nav__dinamic col s12">
+      <b>Let's be superheroes by providing good service!!!</b>
+    </div>
+    <div class="static__tittleCart col s12 m7"><p>Carts ({{resCarts.length}}):</p></div>
+    <div class="static__newCart col s12 m5">
+      <button type="button" class="btnAddNewCart"><i
+          class="fa-regular fa-square-plus"
+        ></i>Add New Cart
+      </button>
+      <button type="button" class="btnExitCart hidden">Close View</button>
+    </div>
+  </div>
+  <div class="static__container--cart row noMargin">
+    <div class="container__cart col m12">
+      {{#if resCarts}}
+        <!--Dinamic Contain-->
+        <div class="loading">
+          <b>
+            LOADING DATA...
+          </b>
+        </div>
+      {{else}}
+        <div class="container__empty__card">
+          <div class="card">
+            <div class="card-item--empty">
+              <i class="fa-solid fa-cart-plus"></i></div>
+            <div class="card-body--empty">
+              <b class="card-text--empty">Not Carts Found</b>
+              <p class="card-text--empty">You have not created any cart</p>
+              <p class="card-text--empty">Add first cart now</p>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+  <div class="row noMargin">
+    <div class="container__clearBtn">
+      <button type="button" class="btnCleanCart hidden">Clean Cart</button>
+    </div>
+  </div>
+</div>
+<div class="main__container--side col s1"></div>
+<div id="return"><a href="/login" type="button"><i
+      class="fas fa-light fa-reply-all"
+    ></i></a></div>
+<script
+  src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/cart.js"></script>

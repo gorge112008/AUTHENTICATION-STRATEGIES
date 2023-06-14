@@ -1,0 +1,146 @@
+.main__container__index {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: sticky;
+  }
+  .index__route--static,
+  .index__route--dinamic,
+  .index__route--products,
+  .index__route--carts,
+  .index__route--chat,
+  .index__route--profile{
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .index__route--static a {
+    /*STATIC BUTTON*/
+    position: relative;
+    left: 0;
+    background-color: aquamarine;
+    color: black;
+    border: solid black 2px;
+    border-radius: 20px;
+    font-family: "Sinami", sans-serif;
+    font-size: 2.5rem;
+    padding: 15px;
+    padding-bottom: 5px;
+    transition: all 500ms ease;
+  }
+  
+  .index__route--static a:hover {
+    color: rgb(195, 7, 195);
+    box-shadow: #9966cc 0px 0px 20px 0px;
+    cursor: pointer;
+  }
+  
+  .index__route--dinamic a {
+    /*DINAMIC BUTTON*/
+    background-color: rgb(96, 104, 255);
+    color: black;
+    white-space: normal;
+    border: solid black 2px;
+    border-radius: 20px;
+    font-family: "Sinami", sans-serif;
+    font-size: 2.5rem;
+    padding: 15px;
+    padding-bottom: 5px;
+    transition: all 500ms ease;
+  }
+  
+  .index__route--dinamic a:hover {
+    border: solid black 2px;
+    color: rgb(255, 196, 0);
+    box-shadow: #9966cc 0px 0px 20px 0px;
+    cursor: pointer;
+  }
+  
+  .index__route--products a {
+    /*PRODUCTS BUTTON*/
+    background-color: rgb(210, 96, 255);
+    color: black;
+    white-space: normal;
+    border: solid black 2px;
+    border-radius: 20px;
+    font-family: "Sinami", sans-serif;
+    font-size: 2.5rem;
+    padding: 15px;
+    padding-bottom: 5px;
+    transition: all 500ms ease;
+  }
+  
+  .index__route--products a:hover {
+    border: solid black 2px;
+    color: rgb(0, 242, 255);
+    box-shadow: #ffd16e 0px 0px 20px 0px;
+    cursor: pointer;
+  }
+  .index__route--carts a {
+    /*CARTS BUTTON*/
+    background-color: rgb(255, 96, 120);
+    color: black;
+    white-space: normal;
+    border: solid black 2px;
+    border-radius: 20px;
+    font-family: "Sinami", sans-serif;
+    font-size: 2.5rem;
+    padding: 15px;
+    padding-bottom: 5px;
+    transition: all 500ms ease;
+  }
+  
+  .index__route--carts a:hover {
+    border: solid black 2px;
+    color: greenyellow;
+    box-shadow: #6677cc 0px 0px 20px 0px;
+    cursor: pointer;
+  }
+  
+  .index__route--chat a {
+    /*CHAT BUTTON*/
+    background-color: rgb(255, 253, 192);
+    color: black;
+    white-space: normal;
+    border: solid black 2px;
+    border-radius: 20px;
+    font-family: "Sinami", sans-serif;
+    font-size: 2.5rem;
+    padding: 15px;
+    padding-bottom: 5px;
+    transition: all 500ms ease;
+  }
+  
+  .index__route--chat a:hover {
+    border: solid black 2px;
+    color: blue;
+    box-shadow: #9966cc 0px 0px 20px 0px;
+    cursor: pointer;
+  }
+
+  .index__route--profile a {
+    /*CHAT BUTTON*/
+    background-color: rgb(66, 255, 3);
+    color: black;
+    white-space: normal;
+    border: solid black 2px;
+    border-radius: 20px;
+    font-family: "Sinami", sans-serif;
+    font-size: 2.5rem;
+    padding: 15px;
+    padding-bottom: 5px;
+    transition: all 500ms ease;
+  }
+  
+  .index__route--profile a:hover {
+    border: solid black 2px;
+    color: rgb(255, 0, 0);
+    box-shadow: #b60101 0px 0px 20px 0px;
+    cursor: pointer;
+  }
+  
+  

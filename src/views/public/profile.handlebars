@@ -1,0 +1,114 @@
+<div class="main__container--side col s2"></div>
+<div class="main__container__dinamic col s9">
+  <div class="dinamic row">
+    <div class="nav__dinamic row noMargin">
+      <b>Let's be superheroes by providing good service!!!</b>
+    </div>
+    <div class="profile row">
+      <div class="profile__container--user col s12 m12">
+        <div class="profile__user">
+          <img
+            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+            alt="profile"
+            class="profile__user--img"
+          />
+          <b>Welcome Home!:
+            <u class="first_name">{{resSession.first_name}}
+              {{resSession.last_name}}</u></b>
+        </div>
+      </div>
+      <div class="profile__container--description s12 m12">
+        <div class="profile__information">
+          <div class="profile__information--title">
+            <b>PERSONAL INFORMATION</b>
+          </div>
+          <div class="profile__contain row">
+            <div class="input-field col s10">
+              <label>ID</label>
+              <input
+                id="id"
+                type="password"
+                class="validate inputID"
+                value={{resSession._id}}
+                readonly
+              />
+              <button type="button" id="btnToggleID" class="RevealID hidden"><i
+                  class="fa-regular fa-eye-slash"
+                >
+                </i></button>
+            </div>
+          </div>
+          <div class="profile__contain row">
+            <div class="input-field col s12">
+              <input
+                id="firstName"
+                type="text"
+                class="validate"
+                value={{resSession.first_name}}
+                readonly
+              />
+              <label>First Name</label>
+            </div>
+          </div>
+          <div class="profile__contain row">
+            <div class="input-field col s12">
+              <input
+                id="lastName"
+                type="text"
+                class="validate"
+                value={{resSession.last_name}}
+                readonly
+              />
+              <label>Last Name</label>
+            </div>
+          </div>
+          <div class="profile__contain row">
+            <div class="input-field col s12">
+              <input
+                id="email"
+                type="email"
+                class="validate"
+                value={{resSession.email}}
+                readonly
+              />
+              <label>Email</label>
+            </div>
+          </div>
+          <div class="profile__contain row">
+            <div class="input-field col s12">
+              <input
+                id="age"
+                type="number"
+                class="validate"
+                value={{resSession.age}}
+                readonly
+              />
+              <label>Age</label>
+            </div>
+          </div>
+          <button type="button" class="btnUnlockData">
+            <b>UNLOCK DATA</b>
+          </button>
+        </div>
+      </div>
+      <div class="profile__container--logout s12 m12">
+        <button type="button" class="btnLogout">
+          <b>LOGOUT</b>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main__container--side col s1"></div>
+<div id="return"><a href="/login" type="button"><i
+      class="fas fa-light fa-reply-all"
+    ></i></a></div>
+<!-- Compiled and minified JavaScript -->
+<script
+  src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+></script>
+<script src="/js/index.js"></script>
+<script src="/js/profile.js"></script>

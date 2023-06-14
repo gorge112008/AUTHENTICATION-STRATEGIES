@@ -1,0 +1,130 @@
+<!--STATIC-->
+<div class="main__container--side col s2"></div>
+<div class="main__container__dinamic col s9">
+  <div class="static__container--header row noMargin">
+    <div class="nav__dinamic col s12">
+      <b>Let's be superheroes by providing good service!!!</b>
+    </div>
+    <div class="static__tittle col s12"><p>*Full List Products:</p></div>
+    <div class="dinav__container col s12">
+      <nav class="dinav__container--order col s12">
+        <div class="dinav__titleOrder">
+          <label class="dinav__order--label">Sort by:
+          </label>
+        </div>
+        <div class="dinav__order">
+          <select id="orderProducts" name="select" class="dinav__order--select">
+            <option class="dinav--option" value="">No Sorting</option>
+            <option class="dinav--option" value="asc">Price from lowest to
+              highest</option>
+            <option class="dinav--option" value="desc">Price from highest to
+              lowest</option>
+          </select>
+        </div>
+      </nav>
+      <nav class="dinav__container--option col s12">
+        <div class="dinav__titleFilter">
+          <label class="dinav__filter--label">Filter by:
+          </label>
+        </div>
+        <div class="dinav__filter">
+          <select
+            id="categoryProducts"
+            name="select"
+            class="dinav__filter--select"
+          >
+            <option class="dinav--option" value="">No Category</option>
+            <option class="dinav--option" value="Food">Food</option>
+            <option class="dinav--option" value="Drink">Drink</option>
+            <option class="dinav--option" value="Other">Other</option>
+          </select>
+        </div>
+        <div class="dinav__filter">
+          <select
+            id="statusProducts"
+            name="select"
+            class="dinav__order--select"
+          >
+            <option class="dinav--option" value="">All</option>
+            <option class="dinav--option" value="success">Avaliable</option>
+            <option class="dinav--option" value="error">Not Avaliable</option>
+          </select>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="static__container--grid row noMargin">
+    <div class="container__grid col m12">
+      {{#if resProducts}}
+        {{#each resProducts}}
+          <div class="container__grid__card">
+            <div class="card">
+              <div class="card-header--filled"><h5
+                  class="card-title--filled"
+                >{{tittle}}</h5></div>
+              <img
+                class="card-img-top--filled"
+                src={{thumbnail}}
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <b class="card-text--description">{{description}}</b>
+                <u class="card-text--price">S/{{price}}</u>
+              </div>
+              <div class="card-footer">
+                <b class="card-text--code">Code:
+                  <b class="code">{{code}}</b></b>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      {{else}}
+        <div class="container__empty__card"><div class="card">
+            <div class="card-item">
+              <i class="fa-regular fa-rectangle-xmark"></i></div>
+            <div class="card-body">
+              <b class="card-text--empty">No Products Found</b>
+              <p class="card-text--empty">You have not added any product</p>
+              <p class="card-text--empty">Add first product now</p>
+            </div>
+            <div class="card-footer">
+              <button
+                type="button"
+                class="btn btn-outline-warning btn-sm btnAdd"
+                id="btnAdd"
+              >
+                <a type="button" href="../realtimeproducts"><i
+                    class="fa-regular fa-square-plus"
+                  ></i><b>Add NewProduct</b></a>
+              </button>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+  <div class="row noMargin">
+    <nav class="dinav__container--pages">
+      <button id="page__btnIzq" class="dinav__pages--izq"><i
+          class="fa-solid fa-arrow-left"
+        ></i></button>
+      <label class="dinav__pages--center"></label>
+      <button id="page__btnDer" class="dinav__pages--der"><i
+          class="fa-solid fa-arrow-right"
+        ></i></button>
+    </nav>
+  </div>
+</div>
+<div class="main__container--side col s1"></div>
+<div id="return"><a href="/login" type="button"><i
+      class="fas fa-light fa-reply-all"
+    ></i></a></div>
+<script
+  src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/static.js"></script>
