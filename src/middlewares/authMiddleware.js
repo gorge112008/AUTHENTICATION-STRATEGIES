@@ -30,7 +30,7 @@ const auth = async (req, res, next) => {
       next();
     } else {
       const err = { error: "Authentication Error!" };
-      return res.status(400).json(err);
+      return res.status(401).json(err);
     }
   } catch (error) {
     const err = { error: "Internal Server Error" };

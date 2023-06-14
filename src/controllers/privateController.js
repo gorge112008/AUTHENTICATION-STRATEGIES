@@ -11,7 +11,7 @@ const privateController = {
         body: privateProducts,
       });
     } else if (rol == "USER") {
-      res.render("private/noAdmin", { isLogin: true });
+      res.status(403).render("private/noAdmin", { isLogin: true });
     }
   },
 };

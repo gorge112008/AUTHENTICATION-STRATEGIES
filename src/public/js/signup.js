@@ -4,7 +4,7 @@
 let URLorigin = window.location.origin,
   UrlU = URLorigin + "/api/users",
   UrlCook = URLorigin + "/api/",
-  Urlsignup = URLorigin + "/sessions/";
+  Urlsignup = URLorigin + "/sessions/signup";
 let SignUp = document.querySelector(".btnSignUp"),
   Login = document.querySelector(".btnLogin"),
   checkbox = document.querySelector(".form-check-input"),
@@ -100,7 +100,7 @@ async function getUser(params) {
 
 async function postUser(user) {
   try {
-    let response = await fetch(UrlU, {
+    let response = await fetch(Urlsignup, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -2,6 +2,7 @@ import { Router } from "express";
 import { UserFM } from "../../dao/Mongo/classes/DBmanager.js";
 import auth from "../../middlewares/authMiddleware.js";
 import checkActiveSession from "../../middlewares/checkSession.js";
+import { createHash } from "../../utils.js";
 
 const routerSessions = Router();
 
@@ -41,7 +42,7 @@ routerSessions.get("/logout", (req, res) => {
 });
 
 /*****************************************************************POST*************************************************************/
-routerSessions.post("/login",checkActiveSession,auth, (req, res) => {
+routerSessions.post("/login", checkActiveSession, auth, (req, res) => {
   try {
     const admin = req.session.admin;
     const user = req.session.user;
@@ -56,8 +57,12 @@ routerSessions.post("/login",checkActiveSession,auth, (req, res) => {
 });
 
 routerSessions.post("/signup", async (req, res) => {
-  const newUser = req.body;
   try {
+    const { password, ...userDate } = req.body;
+    const newUser = {
+      password: createHash(password),
+      ...userDate,
+    };
     const response = await UserFM.addUser(newUser);
     res.status(201).json(response);
   } catch (error) {

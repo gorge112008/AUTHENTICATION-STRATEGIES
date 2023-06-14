@@ -80,10 +80,10 @@ async function startSession(data) {
       mode: "cors",
       body: JSON.stringify(data),
     });
-    if (response.status == 400) {
+    if (response.status == 401) {
       const Err = await response.json();
       console.warn(Err.error);
-      return { status: 400, sessionData: Err };
+      return { status: 401, sessionData: Err };
     } else if (response.status == 409) {
       const Err = await response.json();
       console.warn(Err.error);
@@ -204,7 +204,7 @@ form.addEventListener("submit", async (e) => {
         showConfirmButton: false,
         allowOutsideClick: false,
       });
-  } else if (status === 400) {
+  } else if (status === 401) {
     Swal.fire({
       title: sessionData.error,
       text: "The username or password you entered is incorrect",
