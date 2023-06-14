@@ -11,12 +11,9 @@ const auth = async (req, res, next) => {
       if (isValidPassword(Password, response.password)) {
         const { password, ...newResponse } = response;
         if (
-          (response.email === "adminCoder@coder.com" &&
-            response.password === "adminCod3r123") ||
-          (response.email === "adminJorge@coder.com" &&
-            response.password === "adminJ0rg3") ||
-          (response.email === "adminAlhena@coder.com" &&
-            response.password === "adminAlh3n@")
+          User === "adminCoder@coder.com" ||
+          User === "adminJorge@coder.com" ||
+          User === "adminAlhena@coder.com"
         ) {
           if (!req.session.admin) {
             req.session.admin = response;
