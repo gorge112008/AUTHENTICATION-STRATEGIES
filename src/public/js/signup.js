@@ -42,8 +42,6 @@ class NewUser {
 
 async function startSession(data) {
   try {
-    const ruta = Urlsignup + "session";
-    console.log(ruta);
     let response = await fetch(Urlsignup + "session", {
       method: "POST",
       headers: {

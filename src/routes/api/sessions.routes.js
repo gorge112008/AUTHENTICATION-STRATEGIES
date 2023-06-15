@@ -2,7 +2,10 @@ import { Router } from "express";
 import { UserFM } from "../../dao/Mongo/classes/DBmanager.js";
 import auth from "../../middlewares/authMiddleware.js";
 import checkActiveSession from "../../middlewares/checkSession.js";
+import checkRecoverySession from "../../middlewares/checkRecovery.js";
 import { createHash } from "../../utils.js";
+//import passport from "passport";
+//import initializePassport from "../../config/passport.config.js";
 
 const routerSessions = Router();
 
@@ -41,6 +44,11 @@ routerSessions.get("/logout", (req, res) => {
   });
 });
 
+routerSessions.get("/failregister", (req, res) => {
+  const err = { error: "The user already exists!" };
+  res.status(409).json(err);
+});
+
 /*****************************************************************POST*************************************************************/
 routerSessions.post("/login", checkActiveSession, auth, (req, res) => {
   try {
@@ -56,6 +64,7 @@ routerSessions.post("/login", checkActiveSession, auth, (req, res) => {
   }
 });
 
+//passport.authenticate("register",{failureRedirect:"/failregister"}),
 routerSessions.post("/signup", async (req, res) => {
   try {
     const { password, ...userDate } = req.body;
@@ -67,6 +76,15 @@ routerSessions.post("/signup", async (req, res) => {
     res.status(201).json(response);
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+
+routerSessions.post("/forgot",checkRecoverySession, async (req, res) => {
+  try {
+    const msj = { msj: "Success!" };
+    res.status(200).json(msj);
+  } catch (error) {
+    
   }
 });
 

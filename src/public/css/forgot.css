@@ -1,29 +1,30 @@
-.login {
+.forgot {
   display: flex;
   justify-content: center;
   border: solid black 1px;
   background-color: #fdc;
 }
 
-.login__container {
+.forgot__container {
   display: flex;
   align-items: center;
   justify-content: center;
   background-image: url(../assets/foodleft.jpeg);
-  width: 80%;
+  width: auto;
   height: 90vh;
   outline: solid black 1px;
   transition: all ease-in-out 900ms;
 }
 
-.login__container__form {
+.forgot__container__form {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   align-items: center;
-  width: 85%;
-  height: 80%;
+  width: 90%;
+  height: fit-content;
+  padding: 20px;
   position: relative;
   background-color: #def;
   border-top-right-radius: 80px;
@@ -32,7 +33,7 @@
   transition: all ease-in-out 900ms;
 }
 
-.login__form--title {
+.forgot__form--title {
   position: relative;
   display: block;
   text-align: center;
@@ -41,7 +42,7 @@
   width: 60%;
 }
 
-.login__form--title b {
+.forgot__form--title b {
   position: relative;
   display: block;
   font-size: 1.5rem;
@@ -51,7 +52,7 @@
   border-bottom: solid rgb(20, 4, 169) 2px;
 }
 
-.login__form--contain {
+.forgot__form--contain {
   position: relative;
   left: 0;
   right: 0;
@@ -59,190 +60,136 @@
   border-top-left-radius: 40px;
   border-bottom-right-radius: 40px;
   background-color: #ffffff;
-  padding: 0 15px;
+  padding: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80%;
-  height: 85%;
+  width: 100%;
+  height: fit-content;
   filter: drop-shadow(0 1px 10px #edd1ff);
 }
 
-.login__form--contain ul {
+.forgot__form--contain ul {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   height: fit-content;
-  width: max-content;
+  width: 100%;
 }
 
-.login__form__profile {
-  border: solid rgb(137, 137, 137) 3px;
-  background-image: url("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
-  background-size: cover;
-  height: 13vh;
-  width: 13vh;
-  border-radius: 100%;
-  margin-bottom: 10px;
-}
-
-.login__form--contain li {
-  border: solid rgb(255, 183, 0) 2px;
-  background-color: rgb(255, 244, 223);
-  border-radius: 20px;
+.forgot__form--contain li {
+  border: solid rgb(99, 4, 154) 2px;
+  background-color: rgb(222, 230, 245);
+  border-radius: 10px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
+  width: 40vh;
   margin-bottom: 15px;
   font-size: 1rem;
   height: 11vh;
-  
 }
 
-.login--label {
-  width: 85%;
-  font-size: 2.5rem;
+.forgot--label {
+  width: 95%;
   font-weight: bolder;
-  position: absolute;
+  position: relative;
+  font-size: 1.3rem;
   margin: auto;
   left: 0;
   right: 0;
   height: 5vh;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  color: rgb(27, 179, 169);
+  color: rgb(12, 2, 82);
   font-family: "Times New Roman", Times, serif;
-  background-color: rgb(255, 244, 223);
+  background-color: transparent;
   transition: all ease-in-out 900ms;
   z-index: 1;
 }
 
-.login--input {
+.forgot--input {
   display: block;
   margin: auto;
   left: 0;
   right: 0;
-  background-color: white;
   padding-left: 10px;
-  padding-right: 25px ;
   border-radius: 5px;
   color: black;
   font-size: 1rem;
   font-family: "Times New Roman", Times, serif;
   height: 5vh;
-  width: 85%;
-  border: none;
-  border-bottom: solid rgb(0, 0, 0) 3px;
+  width: 35vh;
+  border: solid rgb(0, 0, 0) 2px;
 }
 
-.login--input:invalid {
+.forgot--input:invalid {
   display: block;
   background-color: white;
   color: black;
   border-bottom: solid black 3px;
 }
 
-.login--input:valid {
-  border-bottom: solid rgb(105, 246, 168) 3px;
-  background-color: white;
-}
-
-.login__form__input:hover .login--label,
-.login__form__input:focus-within .login--label {
+.forgot__form__input:hover .forgot--label,
+.forgot__form__input:focus-within .forgot--label {
   position: relative;
   font-size: 1.5rem;
 }
 
-.login__form__input:focus-within .login--input {
+.forgot__form__input:focus-within .forgot--input {
   color: rgb(4, 4, 103);
   border: solid black 2px;
 }
 
-.viewUser,
-.viewPassword {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.viewUser:checked ~ .login__form__input .login--label,
-.viewPassword:checked ~ .login__form__input .login--label {
-  position: relative;
-  font-size: 1.5rem;
-}
-
-
-.login__form__input:hover .RevealPsw{
-  display: block;
-}
-
-.RevealPsw{
-  display: none;
-  position: absolute;
-  right: 20px;
-  bottom: 10px;
-  margin: 0;
-  height: 2.5vh;
-  width: 2.5vh;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  z-index: 0;
-}
-
-.login__checkBox {
+.forgot__register {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
+  flex-direction: column;
   height: auto;
-  width: fit-content;
+  width: 100%;
   cursor: pointer;
   text-decoration: none;
-  width: 100%;
-  margin-bottom: 15px;
 }
 
-.login__checkBox input {
+.forgot__register input {
   height: 2.5vh;
   width: 2.5vh;
   margin-right: 5px;
   cursor: pointer;
 }
 
-.login__checkBox label {
+.forgot__register label {
   font-family: "Times New Roman", Times, serif;
 }
 
-.login__checkBox a{
-  position: absolute;
+.forgot__register a {
+  position: relative;
   font-family: "Times New Roman", Times, serif;
-
+  padding-left: 5px;
   color: rgb(6, 53, 182);
   font-weight: bolder;
   right: 0;
 }
 
-.login__inputBox {
+.forgot__inputBox {
   position: relative;
   display: flex;
   align-items: center;
-  flex-direction: row;
-  height: 5vh;
+  flex-direction: column;
+  height: fit-content;
   width: 100%;
+  margin-bottom: 20px;
 }
 
-.btnSignUp{
-  position: absolute;
+.btnLogin {
+  position: relative;
   display: block;
   margin: auto;
   left: 0;
@@ -252,93 +199,117 @@
   cursor: pointer;
   border: solid rgb(183, 183, 183) 2px;
   border-radius: 5px;
-  width: 45%;
+  width: 40vh;
+  height: 5vh;
   padding: 0 10px;
 }
 
-.btnSignUp:hover {
-  background-color: rgb(184, 246, 242);
-  border: solid aqua 2px;
+.btnLogin:hover {
+  border: solid rgb(186, 167, 0) 2px;
+  background-color: rgb(249, 209, 89);
 }
 
-.btnSignUp b{
-    font-family: "Times New Roman", Times, serif;
-    font-size: 1rem;
-    color: purple;
+.btnLogin b {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1rem;
+  color: rgb(255, 0, 0);
+}
+
+.forgot__form__input:hover .RevealPsw{
+    display: block;
   }
 
-.btnLogin {
-  position: absolute;
+.RevealPsw{
+    display: none;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    margin: 0;
+    height: 2.5vh;
+    width: 2.5vh;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    z-index: 0;
+  }  
+
+.btnforgot {
+  position: relative;
   display: block;
   margin: auto;
   right: 0;
   top: 0;
   bottom: 0;
-  border: solid greenyellow 2px;
+  border: solid rgb(9, 222, 130) 2px;
   border-radius: 5px;
-  background-color: rgb(228, 254, 190);
+  background-color: rgb(208, 255, 218);
   cursor: pointer;
-  width: 45%;
   padding: 0 10px;
+  width: 40vh;
+  height: 5vh;
+  margin-bottom: 20px;
 }
 
-.btnLogin:hover {
-  border: solid rgb(112, 186, 0) 2px;
-  background-color: rgb(185, 249, 89);
+.btnforgot:hover {
+  border: solid rgb(1, 187, 23) 2px;
+  background-color: rgb(169, 248, 151);
 }
 
-.btnLogin b{
-    font-family: "Times New Roman", Times, serif;
-    font-size: 1rem;
-    color: green;
-  }
+.btnforgot b {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1rem;
+  color: green;
+}
 
 /*CSS DEVICE < 600px (37.5rem)(base 1rem=16px) (CEL)*/
 
 @media only screen and (max-width: 37.5rem) {
-  /*DEVICE CEL LOGIN FORM BLOCK*/
-  .login__container {
-    width:  100%;
+  /*DEVICE CEL forgot FORM BLOCK*/
+  .forgot__container {
+    width: 100%;
   }
-  .login__container__form {
+
+  .forgot__container__form {
     flex-direction: column;
-    width: 80%;
+    width: fit-content;
     height: 90%;
   }
-  .login__form__profile {
-    height: 13vh;
-    width: 13vh;
+
+  .forgot__form--contain {
+    width: fit-content;
+    height: 80%;
+    padding: 25px;
   }
-  .login__inputBox {
-    flex-direction: column-reverse;
+
+  .forgot--input {
+    width: 30vh;
+  }
+
+  .forgot__inputBox {
+    flex-direction: column;
     height: fit-content;
   }
-  .btnSignUp{
-    position: relative;
-    border-radius: 5px;
-    width: 47vw;
-    height: 5vh;
+
+  .forgot__register {
+    flex-direction: row;
   }
-  
+
+  .forgot__form--contain li {
+    width: 35vh;
+  }
+
+  .btnforgot {
+    width: 35vh;
+  }
   .btnLogin {
-    position: relative;
-    margin: auto;
-    width: 47vw;
-    height: 5vh;
-    margin-bottom: 20px;
+    width: 35vh;
   }
 }
 /*CSS DEVICE > 992px (62rem) (base 16px=1rem) (LAP)*/
 
 @media only screen and (min-width: 69rem) {
-  /*DEVICE LAP LOGIN FORM BLOCK*/
-  .login__container__form {
-    width: 60%;
-    height: 80%;
-  }
-
-  .login__form__profile {
-    height: 15vh;
-    width: 15vh;
+  /*DEVICE LAP forgot FORM BLOCK*/
+  .forgot__form--contain {
+    height: 90%;
   }
 }

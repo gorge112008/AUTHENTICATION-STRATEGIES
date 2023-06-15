@@ -188,6 +188,7 @@
   flex-direction: row;
   height: 5vh;
   width: 100%;
+  margin-top: 10px;
 }
 
 .btnSignUp {
@@ -195,7 +196,6 @@
   display: block;
   margin: auto;
   right: 0;
-  top: 15px;
   bottom: 0;
   background-color: rgb(184, 246, 242);
   cursor: pointer;
@@ -221,7 +221,6 @@
   display: block;
   margin: auto;
   left: 0;
-  top: 15px;
   bottom: 0;
   border: solid rgb(184, 178, 178) 2px;
   border-radius: 5px;
@@ -256,8 +255,8 @@
     height: 90%;
   }
   .signup__form__profile {
-    height: 9vh;
-    width: 9vh;
+    height: 8vh;
+    width: 8vh;
   }
 
   .signup__form--contain {
@@ -291,7 +290,7 @@
     position: relative;
     width: 55vw;
     height: 5vh;
-    margin: 10px 0;
+    margin-bottom: 10px;
   }
   
   .btnSignUp b{

@@ -1,0 +1,81 @@
+<div class="forgot">
+  <div class="forgot__container">
+    <div class="forgot__container__form">
+      <div class="forgot__form--title">
+        <b>RECOVERY PASSWORD</b>
+      </div>
+      <div class="forgot__form--contain">
+        <form method="POST" action="#" name="form">
+          <ul>
+            <li>
+              <div class="forgot__form__input">
+                <label class="forgot--label">Email</label>
+                <input
+                  class="forgot__user forgot--input"
+                  type="email"
+                  id="user"
+                  placeholder="Enter email"
+                  required
+                />
+              </div>
+            </li>
+            <li>
+              <div class="forgot__form__input">
+                <label class="forgot--label">New Password</label>
+                <input
+                  class="forgot__user forgot--input"
+                  type="password"
+                  id="password"
+                  placeholder="Enter password"
+                  required
+                />
+                <button type="button" id="btnTogglePsw" class="RevealPsw">
+                  <i class="fa-regular fa-eye-slash">
+                  </i></button>
+              </div>
+            </li>
+            <li>
+              <div class="forgot__form__input">
+                <label class="forgot--label">Repeat Password</label>
+                <input
+                  class="forgot__user forgot--input"
+                  type="password"
+                  id="passwordRep"
+                  placeholder="Repeat password"
+                  required
+                />
+                <button type="button" id="btnTogglePswRep" class="RevealPsw">
+                  <i class="fa-regular fa-eye-slash">
+                  </i></button>
+              </div>
+            </li>
+          </ul>
+          <div class="forgot__inputBox">
+            <div class="forgot__action">
+              <button type="submit" class="btnForgot">
+                <b>SEND</b>
+              </button>
+              <button type="button" class="btnLogin">
+                <b>RETURN LOGIN</b>
+              </button>
+            </div>
+          </div>
+          <div class="forgot__register">
+            <label>Are you not registered?</label>
+            <a href="../signup" class="forgot__signup">
+              Create new account</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Compiled and minified JavaScript -->
+<script
+  src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+></script>
+<script src="/js/index.js"></script>
+<script src="/js/forgot.js"></script>

@@ -201,9 +201,9 @@ class UserFileManager {
       throw err;
     }
   }
-  async updateUser(id, body) {
+  async updateUser(email, body) {
     try {
-      const User = await userModel.findOneAndUpdate({ _id: id }, body, {
+      const User = await userModel.findOneAndUpdate({ email: email }, body, {
         new: true,
         upsert: true,
       });

@@ -10,6 +10,9 @@ const publicController = {
   signup: (req, res) => {
     res.render("public/signup", { isLogin: true, style: "/css/signup.css" });
   },
+  forgot: (req, res) => {
+    res.render("public/forgot", { isLogin: true, style: "/css/forgot.css" });
+  },
   profile: (req, res) => {
     const { rol, email } = res.locals.resUser;
     const resSession = res.locals.resSession;
