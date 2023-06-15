@@ -14,6 +14,8 @@ import routerSessions from "./routes/api/sessions.routes.js";
 import routerCookies from "./routes/api/cookies.routes.js";
 import Handlebars from "handlebars";
 import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
+import passport from "passport";
+import initializePassport from "./config/passport.config.js";
 import config from "./config/config.js";
 
 const { DB_USER, DB_PASS, CONNECTION_URL } = config.mongo;
