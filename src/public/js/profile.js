@@ -1,7 +1,7 @@
 /*PROFILE*/
 /*******************************************************CONSTANTES/VARIABLES*************************************************************/
 let URLorigin = window.location.origin,
-  UrlLogin = URLorigin + "/sessions/";
+  UrlLogin = URLorigin + "/api/sessions/";
 
 const btnUnlock = document.querySelector(".btnUnlockData"),
   dataUnlock = document.querySelector(".btnUnlockData b"),

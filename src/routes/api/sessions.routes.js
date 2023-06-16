@@ -1,14 +1,11 @@
 import { Router } from "express";
 import auth from "../../middlewares/authMiddleware.js";
-import checkActiveSession from "../../middlewares/checkSession.js";
-import checkRecoverySession from "../../middlewares/checkRecovery.js";
 import passport from "passport";
-import { createToken, authToken } from "../../utils.js";
 
 const routerSessions = Router();
 
 /*****************************************************************GET*************************************************************/
-routerSessions.get("/session", (req, res) => {
+routerSessions.get("/sessions/session", (req, res) => {
   try {
     const session = req.session;
     if (session.user || session.admin) {
@@ -29,7 +26,34 @@ routerSessions.get("/session", (req, res) => {
   }
 });
 
-routerSessions.get("/logout", (req, res) => {
+routerSessions.get(
+  "/sessions/github",
+  passport.authenticate("github", {
+    scope: ["user:email"],
+  }),
+  async (req, res) => {}
+);
+
+routerSessions.get(
+  "/sessions/githubcallback",
+  passport.authenticate("github", {
+    failureRedirect: "/login",
+  }),auth,
+  async (req, res) => {
+    try {
+      const session = req.user;
+      req.session.counter = 1;
+      const role = req.session.admin ? "admin" : "user";
+      const userName = req.user.first_name;
+      const msj = `WELCOME ${userName.toUpperCase()}`;
+      const login={msj:msj,role:role}
+      res.cookie("login",login);
+      res.redirect("/github");
+    } catch (error) {}
+  }
+);
+
+routerSessions.get("/sessions/logout", (req, res) => {
   res.clearCookie("connect.sid");
   res.clearCookie("SessionCookie");
   req.session.destroy((err) => {
@@ -42,37 +66,35 @@ routerSessions.get("/logout", (req, res) => {
   });
 });
 
-routerSessions.get("/failregister", (req, res) => {
+routerSessions.get("/sessions/failregister", (req, res) => {
   const err = { error: "The user is already registered!" };
   res.status(409).json(err);
 });
 
-routerSessions.get("/faillogin", (req, res) => {
+routerSessions.get("/sessions/faillogin", (req, res) => {
   const err = { error: "An error has occurred with your credentials!" };
   res.status(404).json(err);
 });
 
-routerSessions.get("/failforgot", (req, res) => {
+routerSessions.get("/sessions/failforgot", (req, res) => {
   const err = { error: "An error has occurred with your credentials!" };
   res.status(404).json(err);
 });
 
 /*****************************************************************POST*************************************************************/
 routerSessions.post(
-  "/login",
+  "/sessions/login",
   passport.authenticate("login", {
-    failureRedirect: "/sessions/faillogin",
-  }),
-  auth,
+    failureRedirect: "/api/sessions/faillogin",
+  }),auth,
   async (req, res) => {
     try {
-      const role=req.session.admin?"admin":"user";
+      const role = req.session.admin ? "admin" : "user";
       const userName = req.user.first_name;
       const session = req.user;
       const msj = `WELCOME ${userName.toUpperCase()}`;
       req.session.counter = 1;
-      req.accessToken = createToken(session);
-      res.status(200).json({ success: msj, session: session, role: role });
+      res.status(200).json({ success: msj, session: session, role: role});
     } catch (error) {
       console.error("Not exist any session: " + error);
     }
@@ -80,14 +102,13 @@ routerSessions.post(
 );
 
 routerSessions.post(
-  "/signup",
+  "/sessions/signup",
   passport.authenticate("signup", {
-    failureRedirect: "/sessions/failregister",
+    failureRedirect: "/api/sessions/failregister",
   }),
   async (req, res) => {
     try {
       if (req.user && !req.user.error) {
-        const accessToken = createToken(req.user);
         const msj = {
           success: `Email ${req.user.email} successfully registered`,
           data: accessToken,
@@ -104,14 +125,16 @@ routerSessions.post(
 );
 
 routerSessions.post(
-  "/forgot",
+  "/sessions/forgot",
   passport.authenticate("forgot", {
-    failureRedirect: "/sessions/failforgot",
-  }), async (req, res) => {
-  try {
-    const msj = { success: "Success!" };
-    res.status(200).json(msj);
-  } catch (error) {}
-});
+    failureRedirect: "/api/sessions/failforgot",
+  }),
+  async (req, res) => {
+    try {
+      const msj = { success: "Success!" };
+      res.status(200).json(msj);
+    } catch (error) {}
+  }
+);
 
 export default routerSessions;

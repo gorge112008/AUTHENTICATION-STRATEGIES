@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   background-image: url(../assets/foodleft.jpeg);
-  width: 80%;
+  width: 85%;
   height: 90vh;
   outline: solid black 1px;
   transition: all ease-in-out 900ms;
@@ -22,7 +22,7 @@
   justify-content: center;
   flex-direction: row;
   align-items: center;
-  width: 85%;
+  width: 90%;
   height: 80%;
   position: relative;
   background-color: #def;
@@ -53,8 +53,6 @@
 
 .login__form--contain {
   position: relative;
-  left: 0;
-  right: 0;
   margin: 10px;
   border-top-left-radius: 40px;
   border-bottom-right-radius: 40px;
@@ -75,7 +73,7 @@
   justify-content: center;
   flex-direction: column;
   height: fit-content;
-  width: max-content;
+  width: 100%;
 }
 
 .login__form__profile {
@@ -136,7 +134,7 @@
   font-size: 1rem;
   font-family: "Times New Roman", Times, serif;
   height: 5vh;
-  width: 85%;
+  width: 95%;
   border: none;
   border-bottom: solid rgb(0, 0, 0) 3px;
 }
@@ -188,7 +186,7 @@
 .RevealPsw{
   display: none;
   position: absolute;
-  right: 20px;
+  right: 25px;
   bottom: 10px;
   margin: 0;
   height: 2.5vh;
@@ -226,7 +224,6 @@
 .login__checkBox a{
   position: absolute;
   font-family: "Times New Roman", Times, serif;
-
   color: rgb(6, 53, 182);
   font-weight: bolder;
   right: 0;
@@ -293,6 +290,34 @@
     color: green;
   }
 
+  
+  .login__github{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin: auto;
+    width: 35vh;
+    height: 7vh;
+  }
+
+  .btnGitHub{
+    border: solid rgb(144, 110, 248) 2px;
+    color: white;
+    height: 4vh;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background-color: rgb(0, 0, 0);
+  }
+
+  .btnGitHub:hover{
+    color:#c16ff8
+  }
+
 /*CSS DEVICE < 600px (37.5rem)(base 1rem=16px) (CEL)*/
 
 @media only screen and (max-width: 37.5rem) {
@@ -307,6 +332,14 @@
   }
   .login__form--contain li {
     width: 47vw;
+  }
+
+  .login--input{
+    width: 39vw;
+  }
+
+  .RevealPsw{
+    right: 4vw;
   }
 
   .login__form__profile {

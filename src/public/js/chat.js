@@ -5,7 +5,7 @@ const socket = io();
 let URLorigin = window.location.origin,
   UrlU = URLorigin + "/api/users",
   UrlM = URLorigin + "/api/messages",
-  UrlLogin = URLorigin + "/sessions/",
+  UrlLogin = URLorigin + "/api/sessions/",
   UrlCook = URLorigin + "/api/";
 let swalActive = "inactive";
 let email;

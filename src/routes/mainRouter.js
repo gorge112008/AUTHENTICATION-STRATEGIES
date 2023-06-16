@@ -16,6 +16,8 @@ routerViews.get("/signup", publicController.signup);
 
 routerViews.get("/forgot", publicController.forgot);
 
+routerViews.get("/github", publicController.github)
+
 routerViews.get("/profile", validateSession, publicController.profile);
 
 routerViews.get(

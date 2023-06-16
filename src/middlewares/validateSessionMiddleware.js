@@ -14,7 +14,7 @@ const validateSession = async (req, res, next) => {
       }
       next();
     }else{
-      return res.status(200).render("redirection", { isLogin: true });
+      return res.status(401).render("redirection", { isLogin: true });
     }
   } catch (error) {
     next(error);

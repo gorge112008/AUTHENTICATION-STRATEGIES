@@ -13,6 +13,10 @@ const publicController = {
   forgot: (req, res) => {
     res.render("public/forgot", { isLogin: true, style: "/css/forgot.css" });
   },
+  github: (req, res) => {
+    const { msj, role } = req.cookies.login;
+    res.render("public/github", { isLogin: true, msj: msj, role: role });
+  },
   profile: (req, res) => {
     const { rol, email } = res.locals.resUser;
     const resSession = res.locals.resSession;

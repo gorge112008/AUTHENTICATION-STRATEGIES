@@ -3,8 +3,8 @@
 /*********************************************************CONSTANTES/VARIABLES*************************************************************/
 let URLorigin = window.location.origin,
   UrlCook = URLorigin + "/api/",
-  Urlsession = URLorigin + "/sessions/",
-  UrlLogin = URLorigin + "/sessions/login";
+  Urlsession = URLorigin + "/api/sessions/",
+  UrlLogin = URLorigin + "/api/sessions/login";
 
 const form = document.querySelector("form"),
   SignUp = document.querySelector(".btnSignUp"),
@@ -174,12 +174,12 @@ async function VerificateCookie() {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const userData = new LoginUser();
-  const { status, sessionData, role } = await startSession(userData);
+  const { status, sessionData } = await startSession(userData);
   const userSession = sessionData.session;
   if (status === 200) {
     sessionStorage.setItem(
       "userSession",
-      JSON.stringify({ msj: sessionData.success, rol: role })
+      JSON.stringify({ msj: sessionData.success, role: sessionData.role })
     );
     rememberCheckbox.checked
       ? setDataCookie({ user: userSession.email })

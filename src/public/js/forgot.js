@@ -3,8 +3,9 @@
 /*********************************************************CONSTANTES/VARIABLES*************************************************************/
 let URLorigin = window.location.origin,
   UrlCook = URLorigin + "/api/",
-  UrlSession = URLorigin + "/sessions/";
-  UrlForgot = URLorigin + "/sessions/forgot";
+  Urlsession = URLorigin + "/api/sessions/session",
+  UrlForgot = URLorigin + "/api/sessions/forgot",
+  UrlLogin = URLorigin + "/api/sessions/login";
 
 const form = document.querySelector("form"),
   Login = document.querySelector(".btnLogin"),
@@ -13,6 +14,12 @@ const form = document.querySelector("form"),
   inputPasswordRep = document.getElementById("passwordRep"),
   btnViewPsw = document.getElementById("btnTogglePsw"),
   btnViewPswRep = document.getElementById("btnTogglePswRep");
+
+const psw1= document.querySelector(".forgot__psw"),
+  psw2= document.querySelector(".forgot__psw2");
+
+  psw1.classList.remove("hidden");//UNLOCK PASSWORD UNTIL IMPLEMENT VALIDATION
+  psw2.classList.remove("hidden");//UNLOCK PASSWORD2 UNTIL IMPLEMENT VALIDATION
 
 /*****************************************************************CLASES*************************************************************/
 class RecoveryUser {
@@ -37,6 +44,25 @@ async function sendRecovery(data) {
     });
     const dataRes = await response.json();
     return { status: response.status, recoveryData: dataRes };
+  } catch {
+    console.log(Error);
+  }
+}
+
+async function startSession(user) {
+  try {
+    let response = await fetch(UrlLogin, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+      mode: "cors",
+      body: JSON.stringify(user),
+    });
+    const dataRes = await response.json();
+    return { status: response.status, sessionData: dataRes };
   } catch {
     console.log(Error);
   }
@@ -67,15 +93,30 @@ form.addEventListener("submit", async (e) => {
     const recoveryValues = new RecoveryUser();
     const { status, recoveryData } = await sendRecovery(recoveryValues);
     if (status === 200) {
+      Swal.fire({
+        position: "center",
+        title: recoveryData.success,
+        text: "Updated Password",
+        icon: "success",
+        showConfirmButton: false,
+        allowOutsideClick: false,
+      });
       setDataCookie({ user: recoveryValues.email, timer: 300000 }); //Cookie de sesion nueva registrada, duración 5 min.
+      const { sessionData } = await startSession(recoveryValues);
+      const userSession = sessionData.session;
+      userSession.admin ? (role = "admin") : (role = "user");
+      sessionStorage.setItem(
+        "userSession",
+        JSON.stringify({ msj: sessionData.success, role: role })
+      );
       setTimeout(() => {
-        window.location.href = "../login";
-      }, 1000),
+        window.location.href = "../products";
+      }, 2000),
         Swal.fire({
           position: "center",
-          title: recoveryData.success,
-          text: "Updated Password",
           icon: "success",
+          title: "Logging in...",
+          text: recoveryData.success,
           showConfirmButton: false,
           allowOutsideClick: false,
         });

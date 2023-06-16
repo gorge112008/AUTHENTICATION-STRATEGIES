@@ -2283,6 +2283,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  cursor: progress;
+}
+.redirection__github{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   text-align: center;
   cursor: progress;
 }

@@ -49,9 +49,9 @@ app.use(
   routerMessage,
   routerUser,
   routerCookies,
-  routerProducts
+  routerProducts,
+  routerSessions
 ); //Configurar el servidor para que pueda entender las rutas de la API
-app.use("/sessions",routerSessions);
 
 app.engine(
   //Configurar el servidor para que pueda entender el motor de plantillas

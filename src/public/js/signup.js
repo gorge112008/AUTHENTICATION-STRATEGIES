@@ -4,9 +4,10 @@
 let URLorigin = window.location.origin,
   UrlU = URLorigin + "/api/users",
   UrlCook = URLorigin + "/api/",
-  Urlsession = URLorigin + "/sessions/";
-Urlsignup = URLorigin + "/sessions/signup";
-UrlLogin = URLorigin + "/sessions/login";
+  Urlsession = URLorigin + "/api/sessions/session",
+Urlsignup = URLorigin + "/api/sessions/signup",
+UrlLogin = URLorigin + "/api/sessions/login";
+
 let SignUp = document.querySelector(".btnSignUp"),
   Login = document.querySelector(".btnLogin"),
   checkbox = document.querySelector(".form-check-input"),
@@ -48,9 +49,9 @@ class LoginUser {
 }
 
 /*****************************************************************FUNCIONES*************************************************************/
-async function startSession(data) {
+async function startSession(user) {
   try {
-    let response = await fetch(Urlsession + "session", {
+    let response = await fetch(UrlLogin, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,14 +59,10 @@ async function startSession(data) {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": true,
       mode: "cors",
-      body: JSON.stringify(data),
+      body: JSON.stringify(user),
     });
-    if (response.status == 400) {
-      console.warn("Error en el cliente");
-      return;
-    } else if (response.status == 200) {
-      return response.json();
-    }
+    const dataRes = await response.json();
+    return { status: response.status, sessionData: dataRes };
   } catch {
     console.log(Error);
   }
@@ -194,21 +191,4 @@ btnViewPsw.addEventListener("click", function () {
 
 age();
 
-async function startSession(user) {
-  try {
-    let response = await fetch(UrlLogin, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Credentials": true,
-      mode: "cors",
-      body: JSON.stringify(user),
-    });
-    const dataRes = await response.json();
-    return { status: response.status, sessionData: dataRes };
-  } catch {
-    console.log(Error);
-  }
-}
+

@@ -12,7 +12,9 @@ export const isValidPassword = (password, user) =>
   brcrypt.compareSync(password, user);
 
 export const createToken = (user) => {
-  const token = jwt.sign({ user }, PRIVATE_KEY, { expiresIn: "60000" });
+  const expirationTime= new Date();
+  user.expirationTime=expirationTime;
+  const token = jwt.sign({ user }, PRIVATE_KEY, { expiresIn: "600000" });
   return token;
 };
 

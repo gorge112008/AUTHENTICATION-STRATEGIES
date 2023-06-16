@@ -5,7 +5,7 @@ const socket = io();
 let URLorigin = window.location.origin,
   UrlP = URLorigin + "/api/products",
   UrlC = URLorigin + "/api/carts",
-  UrlLogin = URLorigin + "/sessions/";
+  UrlLogin = URLorigin + "/api/sessions/";
 let opc = "static";
 let btnAdd, options, dataPagination;
 let storeProducts = [],
@@ -56,8 +56,8 @@ class NewParams {
 /*****************************************************************FUNCIONES*************************************************************/
 async function VerificateSession(ActiveSession) {
   try {
-    const { msj, rol } = ActiveSession;
-    if (rol == "admin") {
+    const { msj, role } = ActiveSession;
+    if (role == "admin") {
       Swal.fire({
         position: "center",
         icon: "success",
@@ -66,7 +66,7 @@ async function VerificateSession(ActiveSession) {
         showConfirmButton: true,
       });
       sessionStorage.removeItem("userSession");
-    } else if (rol == "user") {
+    } else if (role == "user") {
       Swal.fire({
         position: "center",
         icon: "success",
