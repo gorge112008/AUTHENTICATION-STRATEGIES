@@ -81,10 +81,10 @@ btnUnlock.addEventListener("click", function () {
 
 btnLogout.addEventListener("click", async () => {
   const email = emailLogged.innerHTML;
-  const rol = rolLogged.innerHTML;
+  const role = rolLogged.innerHTML;
   Swal.fire({
     title: "ARE YOU SURE TO END YOUR SESSION?",
-    text: `${rol} SESSION: ${email}`,
+    text: `${role} SESSION: ${email}`,
     icon: "warning",
     showDenyButton: true,
     confirmButtonColor: "#3085d6",

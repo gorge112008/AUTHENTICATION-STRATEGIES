@@ -15,6 +15,7 @@ const publicController = {
   },
   github: (req, res) => {
     const { msj, role } = req.cookies.login;
+    res.clearCookie("login");
     res.render("public/github", { isLogin: true, msj: msj, role: role });
   },
   profile: (req, res) => {

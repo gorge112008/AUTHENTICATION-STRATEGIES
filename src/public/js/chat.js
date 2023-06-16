@@ -63,10 +63,10 @@ function loadMessages() {
   });
 }
 
-async function validateSession(rol, email) {
+async function validateSession(role, email) {
   swalActive = "active";
   Swal.fire({
-    title: `${rol} ACTIVE SESSION`,
+    title: `${role} ACTIVE SESSION`,
     text: "Welcome: " + email,
     icon: "info",
     showDenyButton: true,
@@ -88,16 +88,16 @@ async function validateSession(rol, email) {
         timer: 1500,
       });
     } else if (result.isDenied) {
-      await closeSession(rol, email);
+      await closeSession(role, email);
     }
   });
 }
 
-async function closeSession(rol, email) {
+async function closeSession(role, email) {
   swalActive = "active";
   Swal.fire({
     title: "ARE YOU SURE TO END YOUR SESSION?",
-    text: `${rol} SESSION: ${email}`,
+    text: `${role} SESSION: ${email}`,
     icon: "warning",
     showDenyButton: true,
     confirmButtonColor: "#3085d6",
@@ -124,7 +124,7 @@ async function closeSession(rol, email) {
           });
       }
     } else if (result.isDenied) {
-      validateSession(rol, email);
+      validateSession(role, email);
     }
   });
 }

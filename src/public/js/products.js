@@ -57,7 +57,7 @@ class NewParams {
 async function VerificateSession(ActiveSession) {
   try {
     const { msj, role } = ActiveSession;
-    if (role == "admin") {
+    if (role === "admin") {
       Swal.fire({
         position: "center",
         icon: "success",
@@ -66,7 +66,7 @@ async function VerificateSession(ActiveSession) {
         showConfirmButton: true,
       });
       sessionStorage.removeItem("userSession");
-    } else if (role == "user") {
+    } else if (role === "user") {
       Swal.fire({
         position: "center",
         icon: "success",
@@ -564,28 +564,6 @@ async function deleteData(idProduct) {
   }
 }
 
-async function addtoCart(id) {
-  try {
-    let response = await fetch(UrlC, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Credentials": true,
-      mode: "cors",
-      body: JSON.stringify(data),
-    });
-    if (response.status == 400) {
-      console.warn("Error en el cliente");
-      return;
-    } else if (response.status == 200) {
-      return response.json();
-    }
-  } catch {
-    console.log(Error);
-  }
-}
 /*FIN FUNCIONES CRUD*/
 
 /*****************************************************************SOCKETS*************************************************************/

@@ -38,7 +38,8 @@ routerSessions.get(
   "/sessions/githubcallback",
   passport.authenticate("github", {
     failureRedirect: "/login",
-  }),auth,
+  }),
+  auth,
   async (req, res) => {
     try {
       const session = req.user;
@@ -46,8 +47,8 @@ routerSessions.get(
       const role = req.session.admin ? "admin" : "user";
       const userName = req.user.first_name;
       const msj = `WELCOME ${userName.toUpperCase()}`;
-      const login={msj:msj,role:role}
-      res.cookie("login",login);
+      const login = { msj: msj, role: role };
+      res.cookie("login", login);
       res.redirect("/github");
     } catch (error) {}
   }
@@ -86,7 +87,8 @@ routerSessions.post(
   "/sessions/login",
   passport.authenticate("login", {
     failureRedirect: "/api/sessions/faillogin",
-  }),auth,
+  }),
+  auth,
   async (req, res) => {
     try {
       const role = req.session.admin ? "admin" : "user";
@@ -94,7 +96,7 @@ routerSessions.post(
       const session = req.user;
       const msj = `WELCOME ${userName.toUpperCase()}`;
       req.session.counter = 1;
-      res.status(200).json({ success: msj, session: session, role: role});
+      res.status(200).json({ success: msj, session: session, role: role });
     } catch (error) {
       console.error("Not exist any session: " + error);
     }
@@ -111,7 +113,6 @@ routerSessions.post(
       if (req.user && !req.user.error) {
         const msj = {
           success: `Email ${req.user.email} successfully registered`,
-          data: accessToken,
         };
         res.status(201).json(msj);
       } else {

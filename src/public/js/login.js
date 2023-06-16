@@ -35,11 +35,11 @@ async function VerificateSession() {
     });
     const { msj, confirm, session } = await response.json();
     if (confirm === true) {
-      const rol = session.user ? "user" : "admin";
-      if (rol === "admin") {
+      const role = session.user ? "user" : "admin";
+      if (role === "admin") {
         sessionStorage.setItem(
           "userSession",
-          JSON.stringify({ msj: msj, rol: "admin" })
+          JSON.stringify({ msj: msj, role: "admin" })
         );
         setTimeout(() => {
           window.location.href = "../products";
@@ -52,10 +52,10 @@ async function VerificateSession() {
             showConfirmButton: false,
             allowOutsideClick: false,
           });
-      } else if (rol === "user") {
+      } else if (role === "user") {
         sessionStorage.setItem(
           "userSession",
-          JSON.stringify({ msj: msj, rol: "user" })
+          JSON.stringify({ msj: msj, role: "user" })
         );
         setTimeout(() => {
           window.location.href = "../products";

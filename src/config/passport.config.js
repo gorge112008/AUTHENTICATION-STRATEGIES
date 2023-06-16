@@ -132,7 +132,6 @@ passport.deserializeUser(async (id, done) => {
     const User = await UserFM.getUserUnique({
       _id: id,
     });
-    delete User._doc.password;
     done(null, User);
   } catch (error) {
     done(error);

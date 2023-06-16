@@ -149,7 +149,7 @@ form.addEventListener("submit", async (e) => {
     userSession.admin ? (role = "admin") : (role = "user");
     sessionStorage.setItem(
       "userSession",
-      JSON.stringify({ msj: sessionData.success, rol: role })
+      JSON.stringify({ msj: sessionData.success, role: role })
     );
     setTimeout(() => {
       window.location.href = "../products";
