@@ -536,7 +536,6 @@ async function updateCarts(idproduct){
   const storeCarts = await getDataCarts();
   for (const listCart of storeCarts) {
     deletedProductCart(listCart._id, idproduct);
-  console.log("ACTUALIZANDO CARRITO"+listCart._id+" PRODUCTO: "+idproduct);
   }
 }
 

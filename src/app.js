@@ -15,7 +15,7 @@ import routerCookies from "./routes/api/cookies.routes.js";
 import Handlebars from "handlebars";
 import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
 import passport from "passport";
-import initializePassport from "./config/passport.config.js";
+import {initializePassport} from "./config/passport.config.js";
 import config from "./config/config.js";
 
 const { DB_USER, DB_PASS, CONNECTION_URL } = config.mongo;
@@ -40,6 +40,8 @@ app.use(
 );
 app.use(express.json()); //Configurar el servidor para que pueda entender los formatos JSON
 app.use(express.urlencoded({ extended: true })); //Configurar el servidor para que pueda entender los formatos URL Encoded
+app.use(passport.initialize());
+app.use(passport.session());
 app.use("/", routerViews); //Configurar el servidor para que pueda entender las rutas de las vistas
 app.use(
   "/api",
@@ -81,6 +83,6 @@ const isValidStartDate = () => {
   else return false;
 };
 
-isValidStartDate() && environment(); //Si las credenciales de la base de datos son validas, se inicia la aplicacion
+isValidStartDate() && environment() && initializePassport(passport); //Si las credenciales de la base de datos son validas, se inicia la aplicacion
 
 export default app;

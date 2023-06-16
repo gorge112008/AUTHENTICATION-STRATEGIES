@@ -305,12 +305,16 @@
     width: 80%;
     height: 90%;
   }
+  .login__form--contain li {
+    width: 47vw;
+  }
+
   .login__form__profile {
     height: 13vh;
     width: 13vh;
   }
   .login__inputBox {
-    flex-direction: column-reverse;
+    flex-direction: column;
     height: fit-content;
   }
   .btnSignUp{

@@ -272,7 +272,6 @@ async function selectAction() {
   if (RouteIndex === "cartP") {
     storeProducts = [];
     storeCarts = await getDataCarts();
-    console.log("muestrame todos los carts actuales"+JSON.stringify(storeCarts));
     selectRemoveCart();
   } else if (RouteIndex === "cartP/") {
     socket.emit("viewingCart",storeCarts[0]._id)

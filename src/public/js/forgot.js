@@ -4,6 +4,7 @@
 let URLorigin = window.location.origin,
   UrlCook = URLorigin + "/api/",
   UrlSession = URLorigin + "/sessions/";
+  UrlForgot = URLorigin + "/sessions/forgot";
 
 const form = document.querySelector("form"),
   Login = document.querySelector(".btnLogin"),
@@ -13,10 +14,18 @@ const form = document.querySelector("form"),
   btnViewPsw = document.getElementById("btnTogglePsw"),
   btnViewPswRep = document.getElementById("btnTogglePswRep");
 
+/*****************************************************************CLASES*************************************************************/
+class RecoveryUser {
+  constructor() {
+    this.email = inputUser.value;
+    this.password = inputPassword.value;
+  }
+}
+
 /*********************************************************FUNCIONES*************************************************************/
 async function sendRecovery(data) {
   try {
-    let response = await fetch(UrlSession + "forgot", {
+    let response = await fetch(UrlForgot, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,34 +63,24 @@ async function setDataCookie(data) {
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const recoveryValues = {
-    User: inputUser.value,
-    Password: inputPassword.value,
-    repeatPassword: inputPasswordRep.value,
-  };
-  const { status, recoveryData } = await sendRecovery(recoveryValues);
-  if (status === 200) {
-    setDataCookie({ user: recoveryValues.User, timer: 300000 }); //Cookie de sesion nueva registrada, duración 5 min.
-    setTimeout(() => {
-      window.location.href = "../login";
-    }, 1000),
+  if (inputPassword.value === inputPasswordRep.value) {
+    const recoveryValues = new RecoveryUser();
+    const { status, recoveryData } = await sendRecovery(recoveryValues);
+    if (status === 200) {
+      setDataCookie({ user: recoveryValues.email, timer: 300000 }); //Cookie de sesion nueva registrada, duración 5 min.
+      setTimeout(() => {
+        window.location.href = "../login";
+      }, 1000),
+        Swal.fire({
+          position: "center",
+          title: recoveryData.success,
+          text: "Updated Password",
+          icon: "success",
+          showConfirmButton: false,
+          allowOutsideClick: false,
+        });
+    } else if (status === 404) {
       Swal.fire({
-        position: "center",
-        title: recoveryData.msj,
-        text: "Updated Password",
-        icon: "success",
-        showConfirmButton: false,
-        allowOutsideClick: false,
-      });
-  } else if (status === 400) {
-    Swal.fire({
-      title: recoveryData.error,
-      text: "Check your passwords please",
-      icon: "error",
-      confirmButtonText: "Accept",
-    });
-  }else if (status === 404) {
-    Swal.fire({
         title: recoveryData.error,
         text: "Your credentials entered are incorrect",
         icon: "error",
@@ -91,11 +90,19 @@ form.addEventListener("submit", async (e) => {
       }).then((result) => {
         if (result.isConfirmed) {
           form.reset();
-          inputUser.value = recoveryValues.User;
+          inputUser.value = recoveryValues.email;
         } else if (result.isDenied) {
           window.location.href = "../signup";
         }
       });
+    }
+  } else {
+    Swal.fire({
+      title: "Passwords do not match!",
+      text: "Check your passwords please",
+      icon: "error",
+      confirmButtonText: "Accept",
+    });
   }
 });
 

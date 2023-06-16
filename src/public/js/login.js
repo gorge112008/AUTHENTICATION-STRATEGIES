@@ -3,7 +3,8 @@
 /*********************************************************CONSTANTES/VARIABLES*************************************************************/
 let URLorigin = window.location.origin,
   UrlCook = URLorigin + "/api/",
-  UrlLogin = URLorigin + "/sessions/";
+  Urlsession = URLorigin + "/sessions/",
+  UrlLogin = URLorigin + "/sessions/login";
 
 const form = document.querySelector("form"),
   SignUp = document.querySelector(".btnSignUp"),
@@ -14,10 +15,18 @@ const form = document.querySelector("form"),
   rememberCheckbox = document.getElementById("loginCheck"),
   btnViewPsw = document.getElementById("btnTogglePsw");
 
+/*****************************************************************CLASES*************************************************************/
+class LoginUser {
+  constructor() {
+    this.email = inputUser.value;
+    this.password = inputPassword.value;
+  }
+}
+
 /*********************************************************FUNCIONES*************************************************************/
 async function VerificateSession() {
   try {
-    let response = await fetch(UrlLogin + "session", {
+    let response = await fetch(Urlsession + "session", {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,
@@ -68,9 +77,9 @@ async function VerificateSession() {
   }
 }
 
-async function startSession(data) {
+async function startSession(user) {
   try {
-    let response = await fetch(UrlLogin + "login", {
+    let response = await fetch(UrlLogin, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -78,7 +87,7 @@ async function startSession(data) {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": true,
       mode: "cors",
-      body: JSON.stringify(data),
+      body: JSON.stringify(user),
     });
       const dataRes = await response.json();
       return { status: response.status, sessionData: dataRes };
@@ -164,24 +173,17 @@ async function VerificateCookie() {
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const userData = {
-    User: inputUser.value,
-    Password: inputPassword.value,
-  };
-  const { status, sessionData } = await startSession(userData);
+  const userData = new LoginUser();
+  const { status, sessionData, role } = await startSession(userData);
+  const userSession = sessionData.session;
   if (status === 200) {
-    const userSession = sessionData.session;
-    const emailSession = userSession.admin
-      ? userSession.admin.email
-      : userSession.user.email;
-    userSession.admin ? (role = "admin") : (role = "user");
     sessionStorage.setItem(
       "userSession",
       JSON.stringify({ msj: sessionData.success, rol: role })
     );
     rememberCheckbox.checked
-      ? setDataCookie({ user: emailSession })
-      : setDataCookie({ user: emailSession, timer: 10000 });
+      ? setDataCookie({ user: userSession.email })
+      : setDataCookie({ user: userSession.email, timer: 10000 });
     setTimeout(() => {
       window.location.href = "../products";
     }, 1000),
@@ -206,7 +208,7 @@ form.addEventListener("submit", async (e) => {
         userCheckbox.setAttribute("checked", "true");
         pswCheckbox.setAttribute("checked", "true");
         form.reset();
-        inputUser.value = userData.User;
+        inputUser.value = userData.email;
       } else if (result.isDenied) {
         window.location.href = "../signup";
       }

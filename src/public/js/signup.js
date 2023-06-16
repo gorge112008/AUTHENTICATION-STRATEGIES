@@ -4,7 +4,9 @@
 let URLorigin = window.location.origin,
   UrlU = URLorigin + "/api/users",
   UrlCook = URLorigin + "/api/",
-  Urlsignup = URLorigin + "/sessions/signup";
+  Urlsession = URLorigin + "/sessions/";
+Urlsignup = URLorigin + "/sessions/signup";
+UrlLogin = URLorigin + "/sessions/login";
 let SignUp = document.querySelector(".btnSignUp"),
   Login = document.querySelector(".btnLogin"),
   checkbox = document.querySelector(".form-check-input"),
@@ -38,11 +40,17 @@ class NewUser {
   }
 }
 
-/*****************************************************************FUNCIONES*************************************************************/
+class LoginUser {
+  constructor() {
+    this.email = inputEmail.value;
+    this.password = inputPassword.value;
+  }
+}
 
+/*****************************************************************FUNCIONES*************************************************************/
 async function startSession(data) {
   try {
-    let response = await fetch(Urlsignup + "session", {
+    let response = await fetch(Urlsession + "session", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -108,28 +116,11 @@ async function postUser(user) {
       mode: "cors",
       body: JSON.stringify(user),
     });
-    if (response.status == 400) {
-      console.warn("Error en el cliente");
-      return;
-    } else if (response.status == 201) {
-      return response.json();
-    }
+    const dataRes = await response.json();
+    return { status: response.status, userData: dataRes };
   } catch {
     console.log(Error);
   }
-}
-
-async function validateUser(user) {
-  const existingUser = await getUser({ email: user.email });
-  const inputMsj = [];
-  let result = "Success";
-  if (existingUser) {
-    inputMsj.push(`The email ${existingUser.email} it already exists`);
-    result = "Error";
-  } else {
-    inputMsj.push(`Email ${user.email} successfully registered`);
-  }
-  return [result, inputMsj];
 }
 
 async function age() {
@@ -144,37 +135,46 @@ async function age() {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const newUser = new NewUser();
-  validateUser(newUser)
-    .then((response) => {
-      [result, inputMsj] = response;
-      if (result == "Success") {
-        postUser(newUser)
-          .then(async (data) => {
-            setDataCookie({ user: data.email, timer: 300000 }); //Cookie de sesion nueva registrada, duración 5 min.
-            setTimeout(() => {
-              window.location.href = "../login";
-            }, 1500),
-              Swal.fire({
-                position: "center",
-                icon: "info",
-                title: "Successful registration",
-                text: inputMsj,
-                showConfirmButton: false,
-                allowOutsideClick: false,
-              });
-          })
-          .catch((error) => console.log("Error:" + error));
-      } else if (result == "Error") {
-        Swal.fire({
-          text: inputMsj,
-          icon: "error",
-          confirmButtonText: "Accept",
-        });
-        inputEmail.value = "";
-        inputEmail.focus();
-      }
-    })
-    .catch((error) => console.log("Error:" + error));
+  const { status, userData } = await postUser(newUser);
+  if (status == 201) {
+    Swal.fire({
+      position: "center",
+      icon: "info",
+      title: "Successful registration",
+      text: userData.success,
+      showConfirmButton: false,
+      allowOutsideClick: false,
+    });
+    setDataCookie({ user: userData.email, timer: 300000 }); //Cookie de sesion nueva registrada, duración 5 min.
+    const userLogin = new LoginUser();
+    const { sessionData } = await startSession(userLogin);
+    const userSession = sessionData.session;
+    userSession.admin ? (role = "admin") : (role = "user");
+    sessionStorage.setItem(
+      "userSession",
+      JSON.stringify({ msj: sessionData.success, rol: role })
+    );
+    setTimeout(() => {
+      window.location.href = "../products";
+    }, 2000),
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Logging in...",
+        text: userData.success,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+      });
+  } else if (status === 400 || 409) {
+    Swal.fire({
+      title: "Registration Error",
+      text: userData.error,
+      icon: "error",
+      confirmButtonText: "Accept",
+    });
+    inputEmail.value = "";
+    inputEmail.focus();
+  }
 });
 
 Login.addEventListener("click", async (e) => {
@@ -193,3 +193,22 @@ btnViewPsw.addEventListener("click", function () {
 });
 
 age();
+
+async function startSession(user) {
+  try {
+    let response = await fetch(UrlLogin, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+      mode: "cors",
+      body: JSON.stringify(user),
+    });
+    const dataRes = await response.json();
+    return { status: response.status, sessionData: dataRes };
+  } catch {
+    console.log(Error);
+  }
+}

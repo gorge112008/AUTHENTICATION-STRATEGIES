@@ -1,11 +1,9 @@
 import { Router } from "express";
-import { UserFM } from "../../dao/Mongo/classes/DBmanager.js";
 import auth from "../../middlewares/authMiddleware.js";
 import checkActiveSession from "../../middlewares/checkSession.js";
 import checkRecoverySession from "../../middlewares/checkRecovery.js";
-import { createHash } from "../../utils.js";
-//import passport from "passport";
-//import initializePassport from "../../config/passport.config.js";
+import passport from "passport";
+import { createToken, authToken } from "../../utils.js";
 
 const routerSessions = Router();
 
@@ -45,47 +43,75 @@ routerSessions.get("/logout", (req, res) => {
 });
 
 routerSessions.get("/failregister", (req, res) => {
-  const err = { error: "The user already exists!" };
+  const err = { error: "The user is already registered!" };
   res.status(409).json(err);
 });
 
+routerSessions.get("/faillogin", (req, res) => {
+  const err = { error: "An error has occurred with your credentials!" };
+  res.status(404).json(err);
+});
+
+routerSessions.get("/failforgot", (req, res) => {
+  const err = { error: "An error has occurred with your credentials!" };
+  res.status(404).json(err);
+});
+
 /*****************************************************************POST*************************************************************/
-routerSessions.post("/login", checkActiveSession, auth, (req, res) => {
-  try {
-    const admin = req.session.admin;
-    const user = req.session.user;
-    const userName = admin ? admin.first_name : user.first_name;
-    const session = req.session;
-    const msj = `WELCOME ${userName.toUpperCase()}`;
-    req.session.counter = 1;
-    res.status(200).json({ success: msj, session: session });
-  } catch (error) {
-    console.error("Not exist any session: " + error);
+routerSessions.post(
+  "/login",
+  passport.authenticate("login", {
+    failureRedirect: "/sessions/faillogin",
+  }),
+  auth,
+  async (req, res) => {
+    try {
+      const role=req.session.admin?"admin":"user";
+      const userName = req.user.first_name;
+      const session = req.user;
+      const msj = `WELCOME ${userName.toUpperCase()}`;
+      req.session.counter = 1;
+      req.accessToken = createToken(session);
+      res.status(200).json({ success: msj, session: session, role: role });
+    } catch (error) {
+      console.error("Not exist any session: " + error);
+    }
   }
-});
+);
 
-//passport.authenticate("register",{failureRedirect:"/failregister"}),
-routerSessions.post("/signup", async (req, res) => {
-  try {
-    const { password, ...userDate } = req.body;
-    const newUser = {
-      password: createHash(password),
-      ...userDate,
-    };
-    const response = await UserFM.addUser(newUser);
-    res.status(201).json(response);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+routerSessions.post(
+  "/signup",
+  passport.authenticate("signup", {
+    failureRedirect: "/sessions/failregister",
+  }),
+  async (req, res) => {
+    try {
+      if (req.user && !req.user.error) {
+        const accessToken = createToken(req.user);
+        const msj = {
+          success: `Email ${req.user.email} successfully registered`,
+          data: accessToken,
+        };
+        res.status(201).json(msj);
+      } else {
+        const err = { error: "An error occurred with the registration" };
+        res.status(400).json(err);
+      }
+    } catch (error) {
+      res.status(500).json({ error: error });
+    }
   }
-});
+);
 
-routerSessions.post("/forgot",checkRecoverySession, async (req, res) => {
+routerSessions.post(
+  "/forgot",
+  passport.authenticate("forgot", {
+    failureRedirect: "/sessions/failforgot",
+  }), async (req, res) => {
   try {
-    const msj = { msj: "Success!" };
+    const msj = { success: "Success!" };
     res.status(200).json(msj);
-  } catch (error) {
-    
-  }
+  } catch (error) {}
 });
 
 export default routerSessions;

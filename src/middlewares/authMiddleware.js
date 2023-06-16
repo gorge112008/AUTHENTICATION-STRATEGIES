@@ -1,19 +1,14 @@
-import { isValidPassword } from "../utils.js";
-
 const auth = async (req, res, next) => {
   try {
-    const { Password } = req.body;
-    const response = res.locals.session;
-    if (isValidPassword(Password, response.password)) {
-      delete response._doc.password; //IMPORTANT: delete password from response
+    if (req.user && !req.user.error) {
       if (
-        response.email === "adminCoder@coder.com" ||
-        response.email === "adminJorge@coder.com" ||
-        response.email === "adminAlhena@coder.com"
+        req.user.email === "adminCoder@coder.com" ||
+        req.user.email === "adminJorge@coder.com" ||
+        req.user.email === "adminAlhena@coder.com"
       ) {
-        req.session.admin=req.session.admin||response;
+        req.session.admin = req.session.admin || req.user;
       } else {
-        req.session.user=req.session.user||response;
+        req.session.user = req.session.user || req.user;
       }
       next();
     } else {
